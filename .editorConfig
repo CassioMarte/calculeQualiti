@@ -1,0 +1,9 @@
+root=true   #indica o arquivo que recebera as configuração
+
+ [*]    # * em todos os arquivos
+indent_style = space # identação com 1 espaço em branco
+indent_size = 2 # cascata de 2 espaço em cada nivel
+charset = utf-8 # modelo de caracteres
+trim_trailing_whitespace = true # remove espaços em branco no final das linhas
+insert_final_newline = true # adiciona uma linha a mais no final do projeto
+end_of_line = lf # quebra de linhas padronizadas

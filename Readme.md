@@ -26,7 +26,27 @@ tsconfig.json
 
 "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts"
 
+//  import 'reflect-metadata';
+//  import { DataSource } from "typeorm";
+//
+// export const AppDataSource = new DataSource({
+//   type: "sqlite",
+//   database: "./src/database/database.sqlite",
+//   entities: [__dirname + "/entities/*.ts"],
+//   migrations: [__dirname + "/migrations/*.ts"],
+//   synchronize: true,
+//   logging: false
+// });
 
 
+// export default class AppError {
+//     public readonly message: string;
+//     public readonly statusCode: number;
+  
+//     constructor(message: string, statusCode = 400) {
+//       this.message = message;
+//       this.statusCode = statusCode;
+//     }
+//   }
 
 //https://claude.ai/chat/7e6bde7b-c822-4c71-8729-2e93660abaad

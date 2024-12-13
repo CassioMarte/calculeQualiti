@@ -4,16 +4,29 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-const app = express()
 
-dotenv.config()
-app.use(cors())
-app.use(express.json())
+import 'express-async-error' //error
+import { ErrorHandleMiddleare } from "./error/ErrorHandleMiddeware";
 
-app.get('/', (req, res)=>{
-    res.send('Hello')
-})
 
-app.listen(process.env.PORT, () => {
-    console.log("Running, welcome.")
-})
+import { AppDataSource } from "./database/datasource";
+
+AppDataSource.initialize()
+    .then(() => {
+        console.log('Database running')
+
+        const app = express()
+        app.use(ErrorHandleMiddleare.handleError)
+
+        dotenv.config()
+        app.use(cors())
+        app.use(express.json())
+
+
+        app.listen(process.env.PORT, () => {
+            console.log("Running, welcome.")
+        })
+
+    })
+
+
