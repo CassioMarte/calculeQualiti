@@ -4,8 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-
-import 'express-async-error' //error
+import 'express-async-error' ;
 import { ErrorHandleMiddleare } from "./error/ErrorHandleMiddeware";
 
 
@@ -30,3 +29,6 @@ AppDataSource.initialize()
     })
 
 
+//https://github.com/rocketseat-education/nlw-04-nodejs
+
+//https://app.rocketseat.com.br/classroom/nlw-04-mission-nodejs/lesson/nlw-4-workshop-01-1

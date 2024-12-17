@@ -49,4 +49,31 @@ tsconfig.json
 //     }
 //   }
 
-//https://claude.ai/chat/7e6bde7b-c822-4c71-8729-2e93660abaad
+
+Para poder rodar as migrations instalo: 
+
+install npm install --save-dev cross-env tsconfig-paths
+
+e no script eu coloco:
+
+"scripts": {
+  "migration:create": "cross-env ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:create ./src/database/migrations/%npm_config_name%",
+
+  "migration:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./src/database/datasource.ts"
+}
+
+Criar migração:
+npm run migration:create --name=NomeDaMigracao
+Exemplo:
+npm run migration:create --name=CreateUsersTable
+
+Rodar migrações:
+npm run migration:run
+
+ou  
+
+"scripts": {
+  "migration:create": "typeorm migration:create",
+  "migration:run": "typeorm migration:run",
+  "migration:revert": "typeorm migration:revert"
+}
