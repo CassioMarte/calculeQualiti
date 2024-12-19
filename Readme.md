@@ -50,11 +50,22 @@ tsconfig.json
 //   }
 
 
-Para poder rodar as migrations instalo: 
+Para poder rodar as migrations:
 
-install npm install --save-dev cross-env tsconfig-paths
+no terminal :npx typeorm migration:create ./src/o caminho para past/CreateUser (para gerar uma migrate de user)
+
+ou  instalo: 
+
+install npm install -D cross-env tsconfig-paths
 
 e no script eu coloco:
+
+padrão mac ou linux
+"migration:create": "cross-env ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:create ./src/database/migrations/$npm_config_name$"
+
+padrão windows 
+"migration:create": "cross-env-shell ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:create ./src/database/migrations/%npm_config_name%"
+
 
 "scripts": {
   "migration:create": "cross-env ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:create ./src/database/migrations/%npm_config_name%",
