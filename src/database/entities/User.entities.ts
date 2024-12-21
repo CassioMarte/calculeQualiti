@@ -17,11 +17,11 @@ export class Users {
     @Column({ type: 'varchar' })
     phone: string;
 
-    @Column({ type: "timestamp" })
+    @Column({ type: "datetime", default: () => 'now()' })
     created_at: Date;
 
-    @Column({ type: "timestamp" })
-    updated_at: Date;
+    // @Column({ type: "datetime" })
+    // updated_at: Date;
 
     constructor() {
         if (!this.id) {

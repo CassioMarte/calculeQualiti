@@ -12,11 +12,11 @@ export class Survey {
     @Column({type:'text'}) //text texto sem limite de caracteres
     description: string
 
-    @CreateDateColumn({type:"timestamp"})
+    @CreateDateColumn({type:"datetime"})
     created_at: Date
 
-    @UpdateDateColumn({ type: "timestamp"})
-    updated_at: Date
+    // @UpdateDateColumn({ type: "timestamp"})
+    // updated_at: Date
 
     constructor(){
         if(!this.id){

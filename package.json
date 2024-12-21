@@ -4,9 +4,7 @@
   "description": "Pratice typeorm",
   "main": "index.ts",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts",
-    "migration:create": "cross-env MIGRATION_NAME=$npm_config_name ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:create ./src/database/migrations/%npm_config_name%",
-    "migration:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./src/databese/datasource.ts"
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts"
   },
   "keywords": [],
   "author": "",

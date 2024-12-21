@@ -21,10 +21,10 @@ export class SurveyUser{
     @JoinColumn({name: "survey_id"})
     survey: Survey;
 
-    @Column({type: 'number'})
+    @Column({type: 'decimal'})
     valeu:number
 
-    @CreateDateColumn({type:'timestamp'})
+    @CreateDateColumn({type:'datetime'})
     created_at: Date;
 
     constructor(){

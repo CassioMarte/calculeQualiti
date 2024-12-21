@@ -54,6 +54,8 @@ Para poder rodar as migrations:
 
 no terminal :npx typeorm migration:create ./src/o caminho para past/CreateUser (para gerar uma migrate de user)
 
+ex:  npx typeorm migration:create ./src/database/migrations/CreateUser
+
 ou  instalo: 
 
 install npm install -D cross-env tsconfig-paths
@@ -88,3 +90,10 @@ ou
   "migration:run": "typeorm migration:run",
   "migration:revert": "typeorm migration:revert"
 }
+
+
+
+migration-run
+npx ts-node ./node_modules/typeorm/cli.js migration:run --dataSource ./caminho ate datasource
+ex:
+npx ts-node ./node_modules/typeorm/cli.js migration:run --dataSource ./src/database/datasource.ts
