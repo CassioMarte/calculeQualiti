@@ -9,6 +9,7 @@ import { ErrorHandleMiddleare } from "./error/ErrorHandleMiddeware";
 
 
 import { AppDataSource } from "./database/datasource";
+import { routes } from "./routes/routes";
 
 AppDataSource.initialize()
     .then(() => {
@@ -20,6 +21,8 @@ AppDataSource.initialize()
         dotenv.config()
         app.use(cors())
         app.use(express.json())
+
+        app.use(routes)
 
 
         app.listen(process.env.PORT, () => {

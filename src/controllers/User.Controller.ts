@@ -1,11 +1,10 @@
 import {Request, Response} from 'express'
 
- class UserController{
-     async createUser(req: Request, res:Response){
-       const body = req.
+export class UserController{
+     async createUser(req: Request, res:Response):Promise<any>{
+       const body = req.body
 
-
+       return res.send('Usuário criado com sucesso!');
      }
 }
 
-export {UserController}
