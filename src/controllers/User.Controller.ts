@@ -11,7 +11,7 @@ import { UserRepository } from '../Repositories/User.Repository'
  * 
  */
 
-// Interface para o corpo da requisição
+//Interface para o corpo da requisição
 export interface CreateUserRequest extends Request {
   body: {
     name: string;
@@ -28,7 +28,7 @@ export class UserController {
     this.userRepository = userRepository;
   }
 
-  async createUser(req: CreateUserRequest, res: Response): Promise<Response> {
+  async createUser(req: Request, res: Response): Promise<Response> {
     const { name, email, phone } = req.body;
 
     try {

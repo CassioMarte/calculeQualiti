@@ -1,8 +1,25 @@
+//com injecção 
+
 import { Router } from 'express'
 import { UserController } from '../controllers/User.Controller'
+import { UserRepository } from '../Repositories/User.Repository'
 
-export const routes = Router()
+const routes = Router()
 
-const userController = new UserController(); // Instância do controlador
+const userRepository = new UserRepository
 
-routes.post('/users', userController.createUser);
+const userController = new UserController(userRepository)
+
+routes.post('/user', userController.createUser())
+
+
+//Normal
+
+// import { Router } from 'express'
+// import { UserController } from '../controllers/User.Controller'
+
+// export const routes = Router()
+
+// const userController = new UserController(); 
+
+// routes.post('/users', userController.createUser);

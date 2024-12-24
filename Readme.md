@@ -97,3 +97,7 @@ migration-run
 npx ts-node ./node_modules/typeorm/cli.js migration:run --dataSource ./caminho ate datasource
 ex:
 npx ts-node ./node_modules/typeorm/cli.js migration:run --dataSource ./src/database/datasource.ts
+
+
+
+shift + alt + o organiza os imports

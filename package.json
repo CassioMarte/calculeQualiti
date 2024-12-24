@@ -4,7 +4,8 @@
   "description": "Pratice typeorm",
   "main": "index.ts",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts"
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts",
+    "migration:run":"npx ts-node ./node_modules/typeorm/cli.js migration:run --dataSource ./src/database/datasource.ts"
   },
   "keywords": [],
   "author": "",
