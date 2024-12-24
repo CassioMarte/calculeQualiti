@@ -5,7 +5,7 @@ import { AppDataSource } from "../database/datasource";
 
 export class UserRepository{
     //só posso usar metodos criados aqui
-    //private repository: Repository<Users>;
+    //private repository: Repository<Users>; // se eu quiser ser mais seguro porem só posso usar metodos criados aqui como o findByEmail
     repository: Repository<Users>;    //acesso a tudo que Repository tem
  
     constructor(){

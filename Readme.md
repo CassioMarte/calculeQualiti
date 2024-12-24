@@ -101,3 +101,34 @@ npx ts-node ./node_modules/typeorm/cli.js migration:run --dataSource ./src/datab
 
 
 shift + alt + o organiza os imports
+
+
+Testes
+npm install --save-dev jest
+npm install --save-dev @types/jest ts-jest
+
+npx jest --initpara criar o arquivo de configuração jest.config.js/ts
+
+
+✔ Would you like to use Jest when running "test" script in "package.json"? … yes
+✔ Would you like to use Typescript for the configuration file? … yes
+✔ Choose the test environment that will be used for testing › node
+✔ Do you want Jest to add coverage reports? … yes
+✔ Which provider should be used to instrument code for coverage? › v8
+✔ Automatically clear mock calls, instances, contexts and results before every test? … yes
+
+na config 
+se algum teste falhar pare
+  bail: true, 
+
+rota dos teste onde eles irão estar 
+  testMatch: [
+    "**/__tests__/**/*.[jt]s?(x)",
+    "**/?(*.)+(spec|test).[tj]s?(x)"
+  ],
+
+preset: "ts-jest",
+
+
+install tbm 
+ npm install supertest --save-dev

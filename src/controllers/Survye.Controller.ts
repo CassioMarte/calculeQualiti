@@ -3,11 +3,8 @@ import { SurvyeRepository } from "../Repositories/Survie.Repository";
 
 
 export class SurveyController {
-    private survyeRepository: SurvyeRepository;
-
-    constructor(survyeRepository: SurvyeRepository) {
-        this.survyeRepository = survyeRepository
-    }
+   
+constructor( private survyeRepository: SurvyeRepository) {} //outra forma de injeção 
 
     async create(req: Request, res: Response): Promise<Response> {
         const { title, description } = req.body

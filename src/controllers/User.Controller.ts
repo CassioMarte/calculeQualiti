@@ -20,6 +20,16 @@ export interface CreateUserRequest extends Request {
   };
 }
 
+// class UserController {
+//   constructor(private userRepository: UserRepository) {}
+  
+//   // Arrow function mantém o this
+//   createUser = async (req: Request, res: Response) => {
+//       this.userRepository.findByEmail() // funciona!
+//   }
+// }
+
+
 export class UserController {
   private userRepository: UserRepository;
 
