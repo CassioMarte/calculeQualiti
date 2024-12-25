@@ -130,5 +130,88 @@ rota dos teste onde eles irão estar
 preset: "ts-jest",
 
 
-install tbm 
+install tbm  (usado para simular um servidor)
  npm install supertest --save-dev
+
+
+ Para criar um ambiente de teste primeiro mudamos server.ts
+ para podermos usar app sem afetar o banco principal
+
+ import 'reflect-metadata';
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import 'express-async-errors';
+
+import { ErrorHandleMiddleare } from './error/ErrorHandleMiddeware';
+import { AppDataSource } from './database/datasource';
+import { routes } from './routes/routes';
+
+dotenv.config();
+
+export const createApp = async()=>{
+  await AppDataSource.initialize()
+  
+  console.log('Database initialized')
+
+  const app = express()
+
+  app.use(cors())
+  app.use(express.json())
+  app.use(routes);
+  app.use(ErrorHandleMiddleare.handleError);
+
+    return app;
+}
+
+//server
+createApp()
+    .then((app) => {
+        app.listen(process.env.PORT, () => {
+            console.log(`Running on port ${process.env.PORT}`);
+        });
+    })
+    .catch((err) => {
+        console.error('Error initializing the app:', err);
+    });
+
+
+ex: rodando um banco em teste e um em produção 
+// src/config/database.config.ts
+import { DataSourceOptions } from 'typeorm';
+import path from 'path';
+
+const baseConfig: DataSourceOptions = {
+    type: 'sqlite',
+    entities: ['./src/database/entities/*.ts'],
+    migrations: ['./src/database/migrations/*.ts'],
+    logging: false
+};
+
+export const productionConfig: DataSourceOptions = {
+    ...baseConfig,
+    database: path.join(__dirname, '..', 'database', 'database.sqlite'),
+    synchronize: false
+};
+
+export const testConfig: DataSourceOptions = {
+    ...baseConfig,
+    database: path.join(__dirname, '..', 'database', 'test.sqlite'),
+    // Ou use :memory: para banco em memória
+    // database: ':memory:',
+    synchronize: true,
+    dropSchema: true
+};
+
+// src/database/datasource.ts
+import { DataSource } from "typeorm";
+import { productionConfig, testConfig } from '../config/database.config';
+import 'reflect-metadata';
+
+export const ProductionDataSource = new DataSource(productionConfig);
+export const TestDataSource = new DataSource(testConfig);
+
+// Função helper para pegar o DataSource correto
+export const getDataSource = (env: 'production' | 'test') => {
+    return env === 'production' ? ProductionDataSource : TestDataSource;
+};
