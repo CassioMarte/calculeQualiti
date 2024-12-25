@@ -12,14 +12,14 @@ export const routes = Router()
 const userRepository = new UserRepository()
 const userController = new UserController(userRepository)
 
-routes.post('/user', (req, res) => userController.createUser(req, res))
-//routes.post('/user', userController.createUser)
+//routes.post('/user', (req, res) => userController.createUser(req, res))
+routes.post('/user', userController.createUser)
 
 //survye
-const surveysRepository = new SurvyeRepository()
-const surveyController = new SurveyController(surveysRepository)
+// const surveysRepository = new SurvyeRepository()
+// const surveyController = new SurveyController(surveysRepository)
 
-routes.post('/survye', surveyController.create)
+// routes.post('/survye', surveyController.create)
 
 
 

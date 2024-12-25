@@ -215,3 +215,15 @@ export const TestDataSource = new DataSource(testConfig);
 export const getDataSource = (env: 'production' | 'test') => {
     return env === 'production' ? ProductionDataSource : TestDataSource;
 };
+
+synchronize: true e dropSchema: true. Isso significa que:
+
+dropSchema: true vai dropar todo o schema do banco
+synchronize: true vai criar as tabelas baseado nas entidades
+migrationsRun: true vai rodar as migrations mas como sincronazi é true não precisa
+
+    Nunca usar synchronize: true em produção!
+
+
+// 
+ "test": "set NODE_ENV=test jest"

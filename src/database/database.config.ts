@@ -9,7 +9,7 @@ const databaseCOnfig: DataSourceOptions = {
     database: './src/database/database.sqlite',
     entities: ['./src/database/entities/*.ts'],
     migrations: ['./src/database/migrations/*.ts'],
-    // synchronize: true,
+    // synchronize: false,
     logging: false
 }
 
@@ -17,13 +17,18 @@ const configurations = {
     production:{
         ...databaseCOnfig, 
         database: path.join(__dirname, '..', 'database', 'database.sqlite'),
-        synchronize: false // Por segurança, desabilitar em produção
+        synchronize: false, // Por segurança, desabilitar em produção
+        // migrationsRun: true
     },
     test:{
         ...databaseCOnfig,
-        database: ':memory:', // Banco em memória para testes
-        synchronize: true, // Recria as tabelas a cada teste
+       // database: ':memory:', // Banco em memória para testes
+        database: './src/database/database.test.sqlite' ,
+        migrationsRun: true, // Isso fará com que as migrations rodem automaticamente criando a tabela baseado nas migarions
+        synchronize: false, // Recria as tabelas a cada teste baseado nas entidades 
         dropSchema: true // Limpa o banco a cada teste
+
+        //ler sobre no readme.md
     }
 } as const ;
 

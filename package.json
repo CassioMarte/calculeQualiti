@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts",
     "migration:run": "npx ts-node ./node_modules/typeorm/cli.js migration:run --dataSource ./src/database/datasource.ts",
-    "test": "jest"
+    "teste": "jest",
+    "test": "NODE_ENV=test jest"
   },
   "keywords": [],
   "author": "",
